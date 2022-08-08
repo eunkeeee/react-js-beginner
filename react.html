@@ -12,7 +12,7 @@
 
   <script type="text/babel">
     const root = document.querySelector("#root");
-    const App = () => {
+    const MinutesToHours = () => {
       const [value, setValue] = React.useState();
       const [flipped, setFlipped] = React.useState(false);
       const onChange = (event) => {
@@ -26,7 +26,6 @@
 
       return (
         <div>
-          <h1>Super Converter</h1>
           <label htmlFor="value">Minutes</label>
           <input
             value={!flipped ? value : value * 60}
@@ -47,6 +46,14 @@
           />
           <button onClick={reset}>Reset</button>
           <button onClick={onFlip}>Flip</button>
+        </div>
+      );
+    };
+    const App = () => {
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <MinutesToHours />
         </div>
       );
     };
