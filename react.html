@@ -11,8 +11,9 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-    const Btn = ({ text }) => (
+    const Btn = ({ text, changeValue }) => (
       <button
+        onClick={changeValue}
         style={{
           backgroundColor: "tomato",
           color: "white",
@@ -24,12 +25,16 @@
         {text}
       </button>
     );
+    const MemorizedBtn = React.memo(Btn);
 
     const App = () => {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+
       return (
         <div>
-          <Btn text="Save Changes" />
-          <Btn text="Continue" />
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
         </div>
       );
     };
